@@ -1,0 +1,44 @@
+# 簡易計算機
+
+この計算機は、Mintlifyドキュメントへのインタラクティブな要素の組み込みテストとして使用できます。
+
+---
+
+<div style={{ padding: '20px', border: '1px solid #ccc', borderRadius: '8px', maxWidth: '400px', margin: '20px 0', backgroundColor: '#f9f9f9' }}>
+    <h3 style={{ marginTop: '0' }}>計算テスト</h3>
+    <input type="number" id="num1" placeholder="数値 1" style={{ width: '100%', padding: '8px', margin: '5px 0', boxSizing: 'border-box' }} />
+    <input type="number" id="num2" placeholder="数値 2" style={{ width: '100%', padding: '8px', margin: '5px 0', boxSizing: 'border-box' }} />
+    
+    <div style={{ margin: '10px 0' }}>
+        <button onclick="calculate('add')" style={{ padding: '10px 15px', marginRight: '10px', backgroundColor: '#007bff', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>足し算 (+)</button>
+        <button onclick="calculate('subtract')" style={{ padding: '10px 15px', backgroundColor: '#dc3545', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>引き算 (-)</button>
+    </div>
+    
+    <h4 style={{ marginTop: '15px' }}>結果: <span id="result" style={{ color: '#28a745' }}>0</span></h4>
+</div>
+
+<script>
+    function calculate(operation) {
+        // 入力値を取得し、数値に変換
+        const num1 = parseFloat(document.getElementById('num1').value);
+        const num2 = parseFloat(document.getElementById('num2').value);
+        const resultElement = document.getElementById('result');
+
+        // 有効な数値でなければエラー表示
+        if (isNaN(num1) || isNaN(num2)) {
+            resultElement.textContent = '無効な入力';
+            resultElement.style.color = '#dc3545';
+            return;
+        }
+
+        let result;
+        if (operation === 'add') {
+            result = num1 + num2;
+        } else if (operation === 'subtract') {
+            result = num1 - num2;
+        }
+        
+        resultElement.textContent = result;
+        resultElement.style.color = '#28a745';
+    }
+</script>
