@@ -10,14 +10,14 @@
     <input type="number" id="num2" placeholder="数値 2" style={{ width: '100%', padding: '8px', margin: '5px 0', boxSizing: 'border-box' }} />
     
     <div style={{ margin: '10px 0' }}>
-        <button onclick="calculate('add')" style={{ padding: '10px 15px', marginRight: '10px', backgroundColor: '#007bff', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>足し算 (+)</button>
-        <button onclick="calculate('subtract')" style={{ padding: '10px 15px', backgroundColor: '#dc3545', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>引き算 (-)</button>
+        <button onClick={() => calculate('add')} style={{ padding: '10px 15px', marginRight: '10px', backgroundColor: '#007bff', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>足し算 (+)</button>
+        <button onClick={() => calculate('subtract')} style={{ padding: '10px 15px', backgroundColor: '#dc3545', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>引き算 (-)</button>
     </div>
     
     <h4 style={{ marginTop: '15px' }}>結果: <span id="result" style={{ color: '#28a745' }}>0</span></h4>
 </div>
 
-<script>
+<script dangerouslySetInnerHTML={{__html: `
     function calculate(operation) {
         // 入力値を取得し、数値に変換
         const num1 = parseFloat(document.getElementById('num1').value);
@@ -41,4 +41,4 @@
         resultElement.textContent = result;
         resultElement.style.color = '#28a745';
     }
-</script>
+`}} />
